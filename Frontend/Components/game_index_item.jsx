@@ -1,11 +1,18 @@
 import React from 'react';
 import $ from 'jquery';
+import {history} from 'react-router';
 
 class GameIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.editDescription = this.editDescription.bind(this);
+    this.gameLink = this.gameLink.bind(this);
+  }
+
+  gameLink (e) {
+    e.preventDefault;
+    history.push(`/games/${this.props.game.gameId}`);
   }
 
   fetchGameDetails () {
@@ -56,7 +63,7 @@ class GameIndexItem extends React.Component {
     }
 
     return (
-      <div className='game-box'>
+      <div className='game-box' onClick={this.gameLink}>
         <div className='rank-box'>
           {this.props.game.rank}
         </div>

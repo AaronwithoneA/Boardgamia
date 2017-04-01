@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'JQuery';
 import GameIndexItem from './game_index_item';
 
 class Home extends React.Component {
@@ -9,25 +8,20 @@ class Home extends React.Component {
     this.state = {};
   }
 
-  fetchHotGames () {
-    return $.ajax({
-      method: 'GET',
-      url: 'http://bgg-json.azurewebsites.net/hot'
-    });
+  fetchHotGames() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://bgg-json.azurewebsites.net/hot');
+    xhr.onload = () => {
+      this.setState({games: JSON.parse(xhr.response)});
+    };
+    xhr.send();
   }
 
   componentDidMount  () {
-    this.fetchHotGames().then(res => {
-      console.log(JSON.parse(res));
-       return this.setState({games: JSON.parse(res)});
-    });
+    this.fetchHotGames();
   }
 
   render () {
-      // const games = this.state.games ? this.state.games.map((game, idx) => {
-      //   return <GameIndexItem name = {game.name} idx = {idx}/>;
-      //     }
-      //   ) : [];
     return (
       <div>
         {this.state.games ? this.state.games.map(game =>

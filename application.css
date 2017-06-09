@@ -3,4 +3,26 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 20px;
+}
+
+.game-detail-box {
+  width: 85%;
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
+}
+
+.rank-box {
+  width: 15%;
+  dispay: flex;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: serif;
+  text-align: center;
+}
+
+.name-box {
+  font-size: 28px;
+  font-family: serif;
 }

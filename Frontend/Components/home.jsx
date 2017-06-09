@@ -18,9 +18,9 @@ class Home extends React.Component {
 
   componentDidMount  () {
     this.fetchHotGames().then(res => {
-      console.log(JSON.parse(res))
+      console.log(JSON.parse(res));
        return this.setState({games: JSON.parse(res)});
-    })
+    });
   }
 
   render () {
